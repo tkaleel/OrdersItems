@@ -3,27 +3,27 @@ import java.util.ArrayList;
 public class Order {
     private String name;
     private boolean ready;
-    private ArrayList<Item> items;
+    private ArrayList<Item> items = new ArrayList<Item>();
 
     //constructor
     public Order(){
-        name = "Guest";
-        items = new ArrayList<Item>();
+        this.name = "Guest";
+        this.ready = false;
     }
 
     //overloaded constructor
     public Order(String name){
         this.name = name;
-        items = new ArrayList<Item>();
+        this.ready = false;
     }
     
     //methods
-    public void addItem(Object Item){
-        items.add(Item);
+    public void addItem(Item item){
+        this.items.add(item);
     }
 
-    public String getStatusMessage(boolean ready){
-        if(ready = true){
+    public String getStatusMessage(){
+        if(this.ready == true){
             return "Your order is ready.";
         }
         else{
@@ -31,18 +31,26 @@ public class Order {
         }
     }
 
-    public double getOrderTotal(double[] prices){
+    public double getOrderTotal(){
         double total = 0;
-        for(int i = 0; i <= prices.length-1; i++){
-            total += prices[i];
+        for(Item i: this.items){
+            total += i.getPrice();
         }
         return total;
+    }
+
+    public void display(){
+        System.out.printf("Customer Name: %s\n", this.name);
+        for(Item i: this.items){
+            System.out.println(i.getName() + " - $" + i.getPrice());
+        }
+        System.out.println("Total: $" + this.getOrderTotal());
     }
 
 
     //getter for name
     public String getName(){
-        return name;
+        return this.name;
     }
     //setter for name
     public void setName(String name){
@@ -51,10 +59,10 @@ public class Order {
 
     //getter for readiness
     public boolean getReady(){
-        return ready;
+        return this.ready;
     }
     //setter for readiness
-    public void setReady(){
+    public void setReady(boolean ready){
         this.ready = ready;
     }
 
@@ -62,7 +70,7 @@ public class Order {
     public ArrayList<Item> getItems(){
         return items;
     }
-
+    //setter for items
     public void setItems(){
         this.items = items;
     }

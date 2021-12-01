@@ -11,7 +11,7 @@ public class Item{
     }
     //getter for name
     public String getName() {
-        return name;
+        return this.name;
     }
     //setter for name
     public void setName(String name){
@@ -20,10 +20,10 @@ public class Item{
 
     //getter for price
     public double getPrice(){
-        return price;
+        return this.price;
     }
     //setter for price
-    public void setPrice(){
+    public void setPrice(double price){
         this.price = price;
     }
 
