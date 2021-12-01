@@ -38,8 +38,6 @@ public class TestOrders {
         order4.total = 3*(item2.price);
         order4.ready = false;
         order4.items.add(item2);
-        order4.items.add(item2);
-        order4.items.add(item2);
 
         
         System.out.printf("Name: %s\n", order1.name);
